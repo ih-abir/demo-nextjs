@@ -1,0 +1,17 @@
+$Louis-George-Cafe: var(--font-louis-george-cafe), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$Poppins:  var(--font-poppins), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+// @font-face {
+// 	font-family: "Louis George Cafe";
+// 	font-style: normal;
+// 	font-display: swap;
+// 	src: url("/fonts/louis_george_cafe-webfont.woff2") format("woff2");
+// }
+
+.louis-george-cafe {
+  font-family: $Louis-George-Cafe;
+}
+
+.poppins {
+  font-family: $Poppins;
+}
