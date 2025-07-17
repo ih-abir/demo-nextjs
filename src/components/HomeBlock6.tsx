@@ -29,7 +29,7 @@ export default function ContactSection() {
           <div
             className={[
               "w-full !max-w-[750px]",
-              "flex flex-wrapjustify-evenly items-center",
+              "flex flex-wrap justify-evenly items-center",
               "gap-[clamp(2.5rem,0.5rem+5vw,5rem)] mx-auto"
             ].join(" ")}
           >
