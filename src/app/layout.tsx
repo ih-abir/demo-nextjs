@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import Script from "next/script";
+import type { Metadata } from "next";
 
 import Navbar from "@components/Navbar";
 import Footer from "@components/Footer";
@@ -39,11 +40,23 @@ export default function RootLayout({
       <body className={[poppins.variable, louisGeorgeCafe.variable].join(" ")}>
         <div
           className={[
-            "fixed inset-0 size-screen z-[-99]",
-            ` bg-cover bg-center`
+            "fixed inset-0 z-[-99]",
+            "size-screen bg-cover bg-center"
           ].join(" ")}
-          style={{ backgroundImage: `url(${bgImage.src})` }}
-        ></div>
+        >
+          <Image
+            className="w-full h-full object-cover"
+            src={bgImage}
+            alt="background-image"
+            width={1920}
+            height={1080}
+            sizes={[
+              "(max-width: 325px) 325px, (max-width: 415px) 415px",
+              "(max-width: 639px) 639px, (max-width: 767px) 767px",
+              "(max-width: 1023px) 1023px, (max-width: 1440px) 1440px, 1920px",
+            ].join(", ")}
+          />
+        </div>
         
         <div className="block w-full">
           <Navbar />

@@ -16,7 +16,6 @@ const navMenus = [
 ];
 
 export default function Navbar() {
-
   useEffect(() => {
     const nav = document.querySelector('.navbar');
     const onScroll = () => {

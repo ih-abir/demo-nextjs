@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import MouseIcon from "@images/mouse-icon.svg";
 import HeaderImage from "@images/header-image.jpg";
@@ -7,7 +6,6 @@ import HeaderGradient3 from "@images/header-gradient3.png";
 
 
 export default function Hero() {
-  
   return (
     <div 
       className={[
@@ -16,35 +14,6 @@ export default function Hero() {
         "py-[95px] lg:py-[clamp(6.875rem,8.567rem+-3.526vw,8.25rem)]"
       ].join(' ')}
     >
-      <style jsx>{`
-        @keyframes riseAndFadeIn {
-          from {
-            opacity: 0;
-            filter: blur(1px);
-            transform: translateY(200px);
-            visibility: hidden;
-          }
-          to {
-            opacity: 1;
-            filter: blur(0px);
-            transform: translateY(0);
-            visibility: visible;
-          }
-        }
-        .sunrise-effect {
-          opacity: 0;
-          transform: translateY(200px);
-          visibility: hidden;
-          animation: riseAndFadeIn 1.5s ease-in-out forwards;
-        }
-        .animation-delay-3 {
-          animation-delay: 1s;
-        }
-        .animation-delay-1 {
-          animation-delay: 1.35s;
-        }
-      `}</style>
-
       <div className="wrapper grid z-[50] text-white">
         <div 
           className={[
@@ -97,7 +66,7 @@ export default function Hero() {
             "(max-width: 325px) 325px, (max-width: 415px) 415px",
             "(max-width: 639px) 639px, (max-width: 767px) 767px",
             "(max-width: 1023px) 1023px, (max-width: 1440px) 1440px, 1920px"
-          ].join(' ')}
+          ].join(", ")}
           priority
         />
       </div>

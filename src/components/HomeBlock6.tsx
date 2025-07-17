@@ -88,7 +88,7 @@ export default function ContactSection() {
                   "reveal-up flex flex-wrap",
                   "space-x-5 justify-between lg:mr-20"
                 ].join(" ")}
-                >
+              >
                 {socialLogos.map((Icon, i) => (
                   <Icon
                     key={i}

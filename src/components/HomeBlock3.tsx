@@ -119,7 +119,7 @@ export default function Carousel() {
                   width={300}
                   height={200}
                   sizes={[
-                    "(max-width: 325px) 235px, (max-width: 425px) 327px,",
+                    "(max-width: 325px) 235px, (max-width: 425px) 327px",
                     "(max-width: 575px) 465px, 524px",
                   ].join(", ")}
                 />

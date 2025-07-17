@@ -60,71 +60,71 @@ const items = [
 
 export default function Testimonials() {
   useEffect(() => {
-  type CarouselElement = HTMLElement & { _timer?: ReturnType<typeof setTimeout> };
+    type CarouselElement = HTMLElement & { _timer?: ReturnType<typeof setTimeout> };
 
-  const carousel = document.getElementById("testimonial-carousel") as CarouselElement;
-  if (!carousel) return;
+    const carousel = document.getElementById("testimonial-carousel") as CarouselElement;
+    if (!carousel) return;
 
-  const cards = carousel.querySelectorAll<HTMLDivElement>(".card");
-  const mq = window.matchMedia("(min-width:768px)");
+    const cards = carousel.querySelectorAll<HTMLDivElement>(".card");
+    const mq = window.matchMedia("(min-width:768px)");
 
-  const getCardWidth = () =>
-    cards[0].offsetWidth + parseFloat(getComputedStyle(carousel).gap || '0');
+    const getCardWidth = () =>
+      cards[0].offsetWidth + parseFloat(getComputedStyle(carousel).gap || '0');
 
-  const highlight = () => {
-    const scroll = carousel.scrollLeft;
-    const index = Math.round(scroll / getCardWidth());
-    const total = cards.length;
-    let target = mq.matches ? (index + 1) % total : index % total;
+    const highlight = () => {
+      const scroll = carousel.scrollLeft;
+      const index = Math.round(scroll / getCardWidth());
+      const total = cards.length;
+      let target = mq.matches ? (index + 1) % total : index % total;
 
-    if (!mq.matches && scroll >= carousel.scrollWidth - carousel.clientWidth - 1) {
-      target = total - 1;
-    }
+      if (!mq.matches && scroll >= carousel.scrollWidth - carousel.clientWidth - 1) {
+        target = total - 1;
+      }
 
-    cards.forEach((card, i) => {
-      card.classList.remove("bg-primary", "bg-dark-lighter", "md:bg-primary", "md:bg-dark-lighter");
-      card.classList.add(
-        mq.matches
-          ? i === target ? "md:bg-primary" : "md:bg-dark-lighter"
-          : i === target ? "bg-primary" : "bg-dark-lighter"
-      );
-    });
-  };
+      cards.forEach((card, i) => {
+        card.classList.remove("bg-primary", "bg-dark-lighter", "md:bg-primary", "md:bg-dark-lighter");
+        card.classList.add(
+          mq.matches
+            ? i === target ? "md:bg-primary" : "md:bg-dark-lighter"
+            : i === target ? "bg-primary" : "bg-dark-lighter"
+        );
+      });
+    };
 
-  const handleScroll = () => {
-    clearTimeout(carousel._timer);
-    carousel._timer = setTimeout(highlight, 150);
-  };
+    const handleScroll = () => {
+      clearTimeout(carousel._timer);
+      carousel._timer = setTimeout(highlight, 150);
+    };
 
-  const handleClick = (e: Event) => {
-    const btn = (e.target as HTMLElement).closest("[data-scroll]");
-    if (!btn) return;
+    const handleClick = (e: Event) => {
+      const btn = (e.target as HTMLElement).closest("[data-scroll]");
+      if (!btn) return;
 
-    const dir = parseInt(btn.getAttribute("data-scroll") || "0", 10);
-    const width = getCardWidth();
-    const max = carousel.scrollWidth - carousel.clientWidth;
-    const pos = carousel.scrollLeft;
-    const step = width * Math.abs(dir);
+      const dir = parseInt(btn.getAttribute("data-scroll") || "0", 10);
+      const width = getCardWidth();
+      const max = carousel.scrollWidth - carousel.clientWidth;
+      const pos = carousel.scrollLeft;
+      const step = width * Math.abs(dir);
 
-    carousel.scrollTo({
-      left: dir > 0
-        ? (pos >= max - 1 ? 0 : Math.min(pos + step, max))
-        : (pos <= 1 ? max : Math.max(pos - step, 0)),
-      behavior: (dir > 0 && pos < max - 1) || (dir < 0 && pos > 1)
-        ? "smooth"
-        : "auto"
-    });
+      carousel.scrollTo({
+        left: dir > 0
+          ? (pos >= max - 1 ? 0 : Math.min(pos + step, max))
+          : (pos <= 1 ? max : Math.max(pos - step, 0)),
+        behavior: (dir > 0 && pos < max - 1) || (dir < 0 && pos > 1)
+          ? "smooth"
+          : "auto"
+      });
 
-    setTimeout(highlight, 350);
-  };
+      setTimeout(highlight, 350);
+    };
 
-  carousel.closest(".carousel-wrapper")?.querySelectorAll(".arrow")
-    .forEach(btn => btn.addEventListener("click", handleClick));
+    carousel.closest(".carousel-wrapper")?.querySelectorAll(".arrow")
+      .forEach(btn => btn.addEventListener("click", handleClick));
 
-  carousel.addEventListener("scroll", handleScroll);
-  mq.addEventListener("change", highlight);
-  highlight();
-}, []);
+    carousel.addEventListener("scroll", handleScroll);
+    mq.addEventListener("change", highlight);
+    highlight();
+  }, []);
 
   return (
     <div
